@@ -1,0 +1,40 @@
+{
+    "autoload": {
+        "psr-4": { "Helper\\": "src/Helper" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Tests\\EndToEnd\\": "tests/EndToEnd" }
+    },
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "phing/phing": "*",
+        "phpunit/phpunit": "*",
+        "php-webdriver/webdriver": "*"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "scripts-descriptions": {
+        "docker:up": "Create and start containers",
+        "docker:down": "Stop and remove containers",
+        "test:endtoend": "Create and start containers, run all end-to-end tests, stop and remove containers",
+        "build": "Build with Phing"
+    },
+    "scripts": {
+        "docker:up": [
+            "docker compose up -d --remove-orphans"
+        ],
+        "docker:down": [
+            "docker compose down --remove-orphans"
+        ],
+        "test:endtoend": [
+            "@docker:up",
+            "phpunit --verbose --colors=always --testdox --configuration phpunit.xml",
+            "@docker:down"
+        ],
+        "build": [
+            "./vendor/bin/phing"
+        ]
+    }
+}

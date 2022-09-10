@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Selenium Grid with PHPUnit" default="main">
+    <target name="main" depends="dockerUp,runTest,dockerDown">
+    </target>
+    <target name="dockerUp">
+        <exec command="docker compose up -d --remove-orphans"/>
+    </target>
+    <target name="dockerDown">
+        <exec command="docker compose down -d --remove-orphans"/>
+    </target>
+    <target name="runTest">
+        <exec command="phpunit --verbose --colors=always --testdox --configuration phpunit.xml"/>
+    </target>
+</project>
