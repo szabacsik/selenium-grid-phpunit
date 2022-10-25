@@ -10,6 +10,14 @@ This is a small experimental **End-to-End test automation** project. What I want
 
 ## Run
 
+### Docker/Grid
 ```shell
-composer test:endtoend
+composer test:docker:endtoend
 ```
+
+### Local/WebDriver
+```shell
+composer test:local:endtoend
+```
+<https://chromedriver.chromium.org/downloads>
+

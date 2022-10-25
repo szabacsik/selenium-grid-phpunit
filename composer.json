@@ -21,6 +21,9 @@
         "test:endtoend": "Create and start containers, run all end-to-end tests, stop and remove containers",
         "build": "Build with Phing"
     },
+    "config": {
+        "process-timeout": 0
+    },
     "scripts": {
         "docker:up": [
             "docker compose up -d --remove-orphans"
@@ -28,10 +31,13 @@
         "docker:down": [
             "docker compose down --remove-orphans"
         ],
-        "test:endtoend": [
+        "test:docker:endtoend": [
             "@docker:up",
             "phpunit --verbose --colors=always --testdox --configuration phpunit.xml",
             "@docker:down"
+        ],
+        "test:local:endtoend": [
+            "phpunit --verbose --colors=always --testdox --configuration phpunit.xml"
         ],
         "build": [
             "./vendor/bin/phing"

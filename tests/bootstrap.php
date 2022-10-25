@@ -9,7 +9,8 @@ use Facebook\WebDriver\Exception\WebDriverCurlException;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Firefox\FirefoxOptions;
 
-$serverUrl = 'http://127.0.0.1:4444';
+$serverUrl = 'http://127.0.0.1:4444'; //grid
+//$serverUrl = 'http://127.0.0.1:9515'; //local chromedriver
 
 $chromeOptions = (new ChromeOptions)->addArguments([
     '--disable-gpu',
