@@ -42,12 +42,13 @@ class EndToEndTest extends TestCase
     }
 
     /**
-     * @testWith ["This page was last edited on 9 September 2022, at 09:30 (UTC)."]
+     * @testWith ["This page was last edited on 24 October 2022, at 13:16 (UTC)."]
      * @testdox Check if the last edit date is `$expected`.
      */
     public function testLastEdited(string $expected)
     {
         $driver = (Registry::getInstance())->get('driver');
+        $driver->executeScript('window.scrollTo(0, document.body.scrollHeight);');
         $lastEdited = $driver->findElement(WebDriverBy::id('footer-info-lastmod'))->getText();
         $this->assertEquals($expected, $lastEdited);
     }
