@@ -33,11 +33,11 @@
         ],
         "test:docker:endtoend": [
             "@docker:up",
-            "phpunit --verbose --colors=always --testdox --configuration phpunit.xml",
+            "phpunit --verbose --testdox --colors=always --configuration phpunit.xml",
             "@docker:down"
         ],
         "test:local:endtoend": [
-            "phpunit --verbose --colors=always --testdox --configuration phpunit.xml"
+            "phpunit --verbose --testdox --colors=always --configuration phpunit.xml"
         ],
         "build": [
             "./vendor/bin/phing"
